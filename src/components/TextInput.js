@@ -1,5 +1,6 @@
-import { InputBase, makeStyles, styled } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 import styleGuide from '../styleGuide';
+import StyledInput from './StyledInput';
 
 const useStyles = makeStyles({
 	label: {
@@ -7,16 +8,7 @@ const useStyles = makeStyles({
 	}
 });
 
-const StyledInput = styled(InputBase)(({ theme }) => ({
-	width: 339,
-	backgroundColor: styleGuide.colors.lightGreyishCyan2,
-	...styleGuide.fontStyles.inputValue,
-	padding: 10,
-	marginTop: 10,
-	"& input": {
-		textAlign: "right"
-	}
-}));
+
 
 function TextInput({ label, startAdornment, value, onChange }) {
 	const classes = useStyles();
@@ -30,7 +22,7 @@ function TextInput({ label, startAdornment, value, onChange }) {
 			<p className={classes.label}
 			>{label}</p>
 			<StyledInput
-				placeholder={String(value)}
+				placeholder='0'
 				startAdornment={startAdornment}
 				onChange={onChangeValue}
 				value={value !== 0 ? String(value) : ''}>

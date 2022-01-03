@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { Button, makeStyles, styled } from '@material-ui/core';
 import styleGuide from '../styleGuide';
 import CustomButton from './CustomButton';
@@ -20,24 +21,35 @@ const PredefinedButton = styled(Button)(({ theme }) => ({
 	width: 100,
 	marginBottom: 13,
 	"& .MuiButton-label": {
-		...styleGuide.fontStyles.outputLabel1
+		...styleGuide.fontStyles.buttonLabelWhite
+	},
+	"&.Mui-disabled": {
+		backgroundColor: styleGuide.colors.strongCyan,
+		"& .MuiButton-label": {
+			...styleGuide.fontStyles.buttonLabelCyan
+		},
 	}
 }));
 
-function SelectTip({ onChangeTip, currentTip }) {
+function SelectTip({ onChangeTip, currentTip, onCustomClicked, customOpen, customActive }) {
 	const classes = useSytles();
 	const tips = [5, 10, 15, 25, 50];
 
+
 	function onClick(e) {
-		onChangeTip(e.currentTarget.value);
+		onChangeTip(Number(e.currentTarget.value));
+	}
+
+	function onCustomChange(e) {
+		onChangeTip(Number(e.target.value), true);
 	}
 
 	return (
 		<div>
-			<p className={classes.label}>Select Tip</p>
+			<p className={classes.label}>Select Tip %</p>
 			<div className={classes.buttonContainer}>
-				{tips.map((tip) => (<PredefinedButton key={tip} value={tip} onClick={onClick}>{tip}%</PredefinedButton>))}
-				<CustomButton />
+				{tips.map((tip) => (<PredefinedButton key={tip} value={tip} onClick={onClick} disabled={Number(currentTip) === tip && !customActive}>{tip}%</PredefinedButton>))}
+				<CustomButton isOpen={customOpen} onClicked={onCustomClicked} onChange={onCustomChange} />
 			</div>
 		</div>
 	);

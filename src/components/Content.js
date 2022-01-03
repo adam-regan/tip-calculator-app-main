@@ -22,7 +22,11 @@ function Content() {
 		numberOfPeople: 0,
 		tip: 0,
 		tipPerPerson: 0,
-		totalPerPerson: 0
+		totalPerPerson: 0,
+		customButtom: {
+			open: false,
+			active: false
+		}
 	};
 	const [state, setState] = useState(defaultState);
 
@@ -49,13 +53,20 @@ function Content() {
 		});
 	}
 
-	function onChangeTip(tipAmount) {
-		setState({
+	function onChangeTip(tipAmount, isCustom = false) {
+		let newState = {
 			...state,
 			tip: tipAmount,
 			tipPerPerson: getTipPerPerson(state.bill, tipAmount, state.numberOfPeople),
 			totalPerPerson: getTotalPerPerson(state.bill, tipAmount, state.numberOfPeople)
-		});
+		};
+		if (isCustom) {
+			newState.customButtom.active = true;
+		} else {
+			newState.customButtom.active = false;
+			newState.customButtom.open = false;
+		}
+		setState(newState);
 	}
 
 	function onChangeNumberOfPeople(numberOfPeople) {
@@ -66,9 +77,22 @@ function Content() {
 			totalPerPerson: getTotalPerPerson(state.bill, state.tip, numberOfPeople)
 		});
 	}
+	function onCustomClicked() {
+		const newState = {
+			...state
+		};
+		newState.customButtom.open = true;
+		setState(newState);
+	}
 
 	function reset() {
 		setState(defaultState);
+	}
+	function isReset() {
+		return state.bill === defaultState.bill
+			&& state.numberOfPeople === defaultState.numberOfPeople
+			&& state.tip === defaultState.tip
+			&& !state.customButtom.open;
 	}
 
 	return (
@@ -80,8 +104,11 @@ function Content() {
 				onChangeBill={onChangeBill}
 				onChangeNumberOfPeople={onChangeNumberOfPeople}
 				onChangeTip={onChangeTip}
+				customOpen={state.customButtom.open}
+				customActive={state.customButtom.active}
+				onCustomClicked={onCustomClicked}
 			/>
-			<OutputContainer tipPerPerson={state.tipPerPerson} totalPerPerson={state.totalPerPerson} onReset={reset} />
+			<OutputContainer tipPerPerson={state.tipPerPerson} totalPerPerson={state.totalPerPerson} onReset={reset} isReset={isReset()} />
 		</div>
 	);
 }

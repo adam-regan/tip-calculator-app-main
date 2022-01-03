@@ -1,5 +1,6 @@
 const colors = {
 	strongCyan: '#26C0AB',
+	mildCyan: '#006a6e',
 	veryDarkCyan: '#00494D',
 	darkGreyishCyan1: '#5E7A7D',
 	darkGreyishCyan2: '#7F9C9F',
@@ -16,21 +17,21 @@ const fontStyles = {
 	},
 	inputValue: {
 		fontFamily: 'Space Mono, monospace',
-		fontSize: 16,
+		fontSize: 18,
 		fontWeight: 700,
-		color: colors.darkGreyishCyan1
+		color: colors.veryDarkCyan
 	},
-	predefinedButtonLabel: {
+	buttonLabelWhite: {
 		fontFamily: 'Space Mono, monospace',
-		fontSize: 16,
+		fontSize: 18,
 		fontWeight: 700,
 		color: colors.white
 	},
-	customButtonLabel: {
+	buttonLabelCyan: {
 		fontFamily: 'Space Mono, monospace',
-		fontSize: 16,
+		fontSize: 18,
 		fontWeight: 700,
-		color: colors.darkGreyishCyan1
+		color: colors.veryDarkCyan
 	},
 	outputLabel1: {
 		fontFamily: 'Space Mono, monospace',
