@@ -5,7 +5,7 @@ import CustomButton from './CustomButton';
 
 const useSytles = makeStyles({
 	label: {
-		...styleGuide.fontStyles.inputLabel
+		...styleGuide.fontStyles.inputLabel1
 	},
 	buttonContainer: {
 		display: 'flex',
