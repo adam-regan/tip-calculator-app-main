@@ -43,14 +43,17 @@ function Content() {
 		if (numberOfPeople < 1) {
 			return 0;
 		}
-		return (bill * (tip / 100)) / numberOfPeople;
+		return roundToCurrency((bill * (tip / 100)) / numberOfPeople);
 	}
 
 	function getTotalPerPerson(bill, tip, numberOfPeople) {
 		if (numberOfPeople < 1) {
 			return 0;
 		}
-		return (bill / numberOfPeople) + getTipPerPerson(bill, tip, numberOfPeople);
+		return roundToCurrency((bill / numberOfPeople) + getTipPerPerson(bill, tip, numberOfPeople));
+	}
+	function roundToCurrency(num) {
+		return Math.round(num * 100) / 100;
 	}
 
 	function onChangeBill(billAmount) {

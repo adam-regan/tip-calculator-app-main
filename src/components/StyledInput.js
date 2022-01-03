@@ -12,6 +12,10 @@ const StyledInput = styled(InputBase)(({ theme }) => ({
 		border: '2px solid ' + styleGuide.colors.strongCyan,
 		padding: 6,
 	},
+	"&.isZero": {
+		border: '2px solid ' + styleGuide.colors.zeroRed,
+		padding: 6,
+	},
 	"& input": {
 		textAlign: "right",
 		caretColor: styleGuide.colors.strongCyan

@@ -6,14 +6,21 @@ const colors = {
 	darkGreyishCyan2: '#7F9C9F',
 	lightGreyishCyan1: '#C5E4E7',
 	lightGreyishCyan2: '#F4FAFA',
+	zeroRed: '#db9080',
 	white: '#FFFFFF'
 }
 const fontStyles = {
-	inputLabel: {
+	inputLabel1: {
 		fontFamily: 'Space Mono, monospace',
 		fontSize: 14,
 		fontWeight: 700,
 		color: colors.darkGreyishCyan1
+	},
+	inputLabel2: {
+		fontFamily: 'Space Mono, monospace',
+		fontSize: 14,
+		fontWeight: 700,
+		color: colors.zeroRed
 	},
 	inputValue: {
 		fontFamily: 'Space Mono, monospace',
