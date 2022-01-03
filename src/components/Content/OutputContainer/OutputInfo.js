@@ -6,10 +6,12 @@ const useStyles = makeStyles({
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		margin: 0
+		margin: 0,
+		height: 68
 	},
 	amount: {
-		...styleGuide.fontStyles.result
+		...styleGuide.fontStyles.result,
+		maxWidth: 159
 	},
 	label1: {
 		...styleGuide.fontStyles.outputLabel1

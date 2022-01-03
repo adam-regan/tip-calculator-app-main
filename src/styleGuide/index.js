@@ -54,7 +54,7 @@ const fontStyles = {
 	},
 	result: {
 		fontFamily: 'Space Mono, monospace',
-		fontSize: 50,
+		fontSize: 40,
 		fontWeight: 700,
 		color: colors.strongCyan
 	},
