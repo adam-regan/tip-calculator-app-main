@@ -4,7 +4,7 @@ import InputContainer from './InputContainer';
 import OutputContainer from './OutputContainer';
 import styleGuide from '../styleGuide'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		justifyContent: 'space-between',
@@ -13,8 +13,17 @@ const useStyles = makeStyles({
 		padding: 30,
 		width: 750,
 		height: 375
-	}
-});
+	},
+	[theme.breakpoints.down("sm")]: {
+		root: {
+			flexDirection: 'column',
+			width: 319,
+			height: 779,
+			borderRadius: '30px 30px 0 0',
+		}
+	},
+}));
+
 function Content() {
 	const classes = useStyles();
 	const defaultState = {

@@ -4,14 +4,19 @@ import { ReactComponent as DollarIcon } from '../assets/icon-dollar.svg';
 import { ReactComponent as PersonIcon } from '../assets/icon-person.svg';
 import SelectTip from './SelectTip';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 		maxWidth: 339,
-	}
-});
+	},
+	[theme.breakpoints.down("sm")]: {
+		root: {
+			height: 488
+		}
+	},
+}));
 function InputContainer(props) {
 	const classes = useStyles();
 	return (

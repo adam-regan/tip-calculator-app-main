@@ -28,7 +28,11 @@ const PredefinedButton = styled(Button)(({ theme }) => ({
 		"& .MuiButton-label": {
 			...styleGuide.fontStyles.buttonLabelCyan
 		},
-	}
+	},
+	[theme.breakpoints.down("sm")]: {
+		width: 151,
+		height: 48
+	},
 }));
 
 function SelectTip({ onChangeTip, currentTip, onCustomClicked, customOpen, customActive }) {

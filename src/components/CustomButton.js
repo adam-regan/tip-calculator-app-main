@@ -9,12 +9,20 @@ const StyledButton = styled(Button)(({ theme }) => ({
 	"& .MuiButton-label": {
 		...styleGuide.fontStyles.buttonLabelCyan,
 		textTransform: 'none'
-	}
+	},
+	[theme.breakpoints.down("sm")]: {
+		width: 151,
+		height: 48
+	},
 }));
 const CustomInput = styled(StyledInput)(({ theme }) => ({
 	width: 100,
 	margin: 0,
-	height: 45
+	height: 45,
+	[theme.breakpoints.down("sm")]: {
+		width: 151,
+		height: 48
+	},
 }));
 
 function CustomButton({ isOpen, onClicked, onChange }) {

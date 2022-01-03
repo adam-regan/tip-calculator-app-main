@@ -2,7 +2,7 @@ import { Button, makeStyles, styled } from '@material-ui/core';
 import styleGuide from '../styleGuide';
 import OutputInfo from './OutputInfo';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		flexDirection: 'column',
@@ -12,8 +12,14 @@ const useStyles = makeStyles({
 		padding: 30,
 		width: 315,
 		height: 315,
-	}
-});
+	},
+	[theme.breakpoints.down("sm")]: {
+		root: {
+			width: 'auto',
+			height: 200
+		}
+	},
+}));
 
 const ResetButton = styled(Button)(({ theme }) => ({
 	backgroundColor: styleGuide.colors.strongCyan,

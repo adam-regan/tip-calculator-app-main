@@ -16,6 +16,9 @@ const StyledInput = styled(InputBase)(({ theme }) => ({
 		textAlign: "right",
 		caretColor: styleGuide.colors.strongCyan
 	},
+	[theme.breakpoints.down("sm")]: {
+		width: 319
+	},
 }));
 
 export default StyledInput;

@@ -4,10 +4,9 @@ import styleGuide from './styleGuide'
 import { ReactComponent as Logo } from './assets/logo.svg';
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
   },
   logo: {
@@ -21,8 +20,18 @@ const useStyles = makeStyles({
     width: 1440,
     height: 1024,
     backgroundColor: styleGuide.colors.lightGreyishCyan1
-  }
-});
+  },
+  [theme.breakpoints.down("sm")]: {
+    logo: {
+      marginTop: 50,
+      marginBottom: 50
+    },
+    background: {
+      width: 379,
+      height: 993
+    }
+  },
+}));
 
 function App() {
   const classes = useStyles();
