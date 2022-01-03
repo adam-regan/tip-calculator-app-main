@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import TextInput, { INPUT_TYPES } from './TextInput';
-import { ReactComponent as DollarIcon } from '../assets/icon-dollar.svg';
-import { ReactComponent as PersonIcon } from '../assets/icon-person.svg';
+import { ReactComponent as DollarIcon } from '../../../assets/icon-dollar.svg';
+import { ReactComponent as PersonIcon } from '../../../assets/icon-person.svg';
 import SelectTip from './SelectTip';
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +32,8 @@ function InputContainer(props) {
 				currentTip={props.tip}
 				onCustomClicked={props.onCustomClicked}
 				customOpen={props.customOpen}
-				customActive={props.customActive} />
+				customActive={props.customActive}
+				customValue={props.customValue} />
 			<TextInput
 				label='Number of People'
 				startAdornment={<PersonIcon />}

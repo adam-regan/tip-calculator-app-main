@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core'
-import styleGuide from '../styleGuide';
+import styleGuide from '../../../styleGuide';
 import StyledInput from './StyledInput';
 
 const useStyles = makeStyles({
@@ -29,7 +29,6 @@ function TextInput({ label, startAdornment, value, onChange, inputType }) {
 	function isValid(value) {
 		switch (true) {
 			case inputType === INPUT_TYPES.CURRENCY:
-				console.log(inputType, value.match(/^\d*(\.\d{0,2})?$/));
 				return !!value.match(/^\d*(\.\d{0,2})?$/);
 			case inputType === INPUT_TYPES.INTEGER:
 				return !!value.match(/^\d+$/) || value === '';
@@ -37,7 +36,12 @@ function TextInput({ label, startAdornment, value, onChange, inputType }) {
 				return false
 		}
 	}
+	function getIsZero() {
+		if (value === '0') {
+			return 'isZero';
+		}
 
+	}
 	return (
 		<div>
 			<div className={classes.labelsContainer}>
@@ -45,13 +49,13 @@ function TextInput({ label, startAdornment, value, onChange, inputType }) {
 				{value === '0' && (<p className={classes.label2}>Can't be zero</p>)}
 			</div>
 			<StyledInput
-				className={value === '0' && 'isZero'}
+				className={getIsZero()}
 				placeholder='0'
 				startAdornment={startAdornment}
 				onChange={onChangeValue}
 				value={value !== 0 ? String(value) : ''}>
 			</StyledInput>
-		</div>
+		</div >
 	);
 }
 

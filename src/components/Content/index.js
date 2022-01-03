@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputContainer from './InputContainer';
 import OutputContainer from './OutputContainer';
-import styleGuide from '../styleGuide'
+import styleGuide from '../../styleGuide'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -33,6 +33,7 @@ function Content() {
 		tipPerPerson: 0,
 		totalPerPerson: 0,
 		customButtom: {
+			value: 0,
 			open: false,
 			active: false
 		}
@@ -73,6 +74,7 @@ function Content() {
 			totalPerPerson: getTotalPerPerson(state.bill, tipAmount, state.numberOfPeople)
 		};
 		if (isCustom) {
+			newState.customButtom.value = tipAmount;
 			newState.customButtom.active = true;
 		} else {
 			newState.customButtom.active = false;
@@ -118,6 +120,7 @@ function Content() {
 				onChangeTip={onChangeTip}
 				customOpen={state.customButtom.open}
 				customActive={state.customButtom.active}
+				customValue={state.customButtom.value}
 				onCustomClicked={onCustomClicked}
 			/>
 			<OutputContainer tipPerPerson={state.tipPerPerson} totalPerPerson={state.totalPerPerson} onReset={reset} isReset={isReset()} />

@@ -1,6 +1,6 @@
 
 import { Button, makeStyles, styled } from '@material-ui/core';
-import styleGuide from '../styleGuide';
+import styleGuide from '../../../styleGuide';
 import CustomButton from './CustomButton';
 
 const useSytles = makeStyles({
@@ -34,7 +34,7 @@ const PredefinedButton = styled(Button)(({ theme }) => ({
 	},
 }));
 
-function SelectTip({ onChangeTip, currentTip, onCustomClicked, customOpen, customActive }) {
+function SelectTip({ onChangeTip, currentTip, onCustomClicked, customOpen, customActive, customValue }) {
 	const classes = useSytles();
 	const tips = [5, 10, 15, 25, 50];
 
@@ -44,7 +44,14 @@ function SelectTip({ onChangeTip, currentTip, onCustomClicked, customOpen, custo
 	}
 
 	function onCustomChange(e) {
-		onChangeTip(Number(e.target.value), true);
+		if (e.target.value === '') {
+			onChangeTip(0, true);
+		} else if (!!e.target.value.match(/^\d+$/)) {
+			const num = Number(e.target.value);
+			if (num >= 0 && num <= 100) {
+				onChangeTip(num, true);
+			}
+		}
 	}
 
 	return (
@@ -52,7 +59,11 @@ function SelectTip({ onChangeTip, currentTip, onCustomClicked, customOpen, custo
 			<p className={classes.label}>Select Tip %</p>
 			<div className={classes.buttonContainer}>
 				{tips.map((tip) => (<PredefinedButton key={tip} value={tip} onClick={onClick} disabled={Number(currentTip) === tip && !customActive}>{tip}%</PredefinedButton>))}
-				<CustomButton isOpen={customOpen} onClicked={onCustomClicked} onChange={onCustomChange} />
+				<CustomButton
+					isOpen={customOpen}
+					onClicked={onCustomClicked}
+					onChange={onCustomChange}
+					value={customValue} />
 			</div>
 		</div>
 	);

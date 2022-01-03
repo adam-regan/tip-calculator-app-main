@@ -1,5 +1,5 @@
 import { InputBase, styled } from '@material-ui/core'
-import styleGuide from '../styleGuide';
+import styleGuide from '../../../styleGuide';
 
 const StyledInput = styled(InputBase)(({ theme }) => ({
 	width: 339,

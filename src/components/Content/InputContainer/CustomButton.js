@@ -1,5 +1,5 @@
 import { Button, styled } from '@material-ui/core';
-import styleGuide from '../styleGuide';
+import styleGuide from '../../../styleGuide';
 import StyledInput from './StyledInput';
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -25,7 +25,7 @@ const CustomInput = styled(StyledInput)(({ theme }) => ({
 	},
 }));
 
-function CustomButton({ isOpen, onClicked, onChange }) {
+function CustomButton({ isOpen, onClicked, onChange, value }) {
 	return (
 		<div>
 			{!isOpen &&
@@ -37,7 +37,8 @@ function CustomButton({ isOpen, onClicked, onChange }) {
 				(<CustomInput
 					onChange={onChange}
 					autoFocus={true}
-					placeholder='0' />)}
+					placeholder='0'
+					value={value !== 0 ? String(value) : ''} />)}
 		</div>
 	);
 }

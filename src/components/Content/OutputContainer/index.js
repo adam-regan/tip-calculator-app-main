@@ -1,5 +1,5 @@
 import { Button, makeStyles, styled } from '@material-ui/core';
-import styleGuide from '../styleGuide';
+import styleGuide from '../../../styleGuide';
 import OutputInfo from './OutputInfo';
 
 const useStyles = makeStyles((theme) => ({
@@ -41,8 +41,8 @@ function OutputContainer({ tipPerPerson, totalPerPerson, onReset, isReset }) {
 	return (
 		<div className={classes.root}>
 			<div>
-				<OutputInfo label='Tip Amount' amount={tipPerPerson} />
-				<OutputInfo label='Total' amount={totalPerPerson} />
+				<OutputInfo label='Tip Amount' amount={parseFloat(tipPerPerson).toFixed(2)} />
+				<OutputInfo label='Total' amount={parseFloat(totalPerPerson).toFixed(2)} />
 			</div>
 			<ResetButton onClick={onReset} disabled={isReset}>RESET</ResetButton>
 		</div>

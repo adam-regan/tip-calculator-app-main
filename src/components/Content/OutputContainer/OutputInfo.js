@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import styleGuide from '../styleGuide';
+import styleGuide from '../../../styleGuide';
 
 const useStyles = makeStyles({
 	root: {
