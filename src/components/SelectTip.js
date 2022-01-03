@@ -1,5 +1,4 @@
 
-import { useState } from 'react';
 import { Button, makeStyles, styled } from '@material-ui/core';
 import styleGuide from '../styleGuide';
 import CustomButton from './CustomButton';
